@@ -17,7 +17,7 @@ async function getCompletion(input) {
   return response.choices[0].message.content;
 }
 
-function ChatBot({ onSubmit }) {
+function ChatBot() {
   const [message, setMessage] = React.useState('');
   const [outputValue, SetChatbotOutputValue] = useState('ChatBot ...');
 
@@ -31,28 +31,28 @@ function ChatBot({ onSubmit }) {
   };
 
   return (
-    <>
-      <div className='chatbot-output'>
+    <div className='chatbot-container'>
+      <div className='chatbot-output-text'>
         <p>{outputValue}</p>
       </div>
       <form className='user-input' onSubmit={handleSubmit}>
         <textarea 
           className='user-input-text-area' 
-          placeholder="Enter your message" 
+          placeholder="Enter your question..." 
           value={message}
           onChange={(event) => setMessage(event.target.value)}
         />
         <button className='user-input-button' type="submit">Send</button>
       </form>
-    </>
+    </div>
   );
 };
 
 function App() {
   return (
-    <div className="App-header">
+    <>
       <ChatBot />
-    </div>
+    </>
   );
 }
 
